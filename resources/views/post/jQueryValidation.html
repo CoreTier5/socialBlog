@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery form validation</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<!-- jQuery -->
+   	<script
+	  src="http://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous">
+	</script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+	<!-- jQuery validation -->
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#register").validate({
+				rules: {
+					firstName: "required",
+					lastName: "required",
+					email: {
+						required: true,
+						email: true
+					},
+					password: {
+						required: true,
+						minlength: "8"
+					},
+					confirmPassword: {
+						required: true,
+						equalTo: "#password"
+					}
+				},
+				messages: {
+					firstName: {
+						required: "Please provide a first name"
+					},
+					lastName: {
+						required: "Please provide a last name"
+					},
+					email: {
+						required: "Please provide a email id",
+						email: "Please enter a valid email"
+					},
+					password: {
+						required: "Please provide a  password",
+						minlength: "Password you entered should contain atleast 8 character"
+					},
+					confirmPassword: {
+						required: "Please provide a confirm password",
+						equalTo: "Password and confirm password should be same"
+					}
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+<form id="register">
+  <fieldset>
+    <legend>Demo Register</legend>
+    <div class="form-group">
+      <label for="firstName">First Name :</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+    </div>
+    <div class="form-group">
+      <label for="firstName">Last Name :</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+    </div>
+    <div class="form-group">
+      <label for="Email">Email address</label>
+      <input type="email" class="form-control" id="Email1" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="Password" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Password</label>
+      <input type="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </fieldset>
+</form>
+
+</body>
+</html>
